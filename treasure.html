@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Hunt Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            padding: 20px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .info-section {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .instructions {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        #locations, #score {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .help-click {
+            font-size: 16px;
+            color: #27ae60;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        
+        .help-click:hover {
+            color: #229954;
+        }
+        
+        #help {
+            font-size: 14px;
+            color: #7f8c8d;
+            min-height: 20px;
+        }
+        
+        .game-field {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .row {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        
+        .location {
+            width: 100px;
+            height: 100px;
+            margin: 2px;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .location:hover {
+            transform: scale(1.05);
+            border-color: #2980b9;
+        }
+        
+        .location img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chanikya treasure hunt</h1>
+    
+    <div class="info-section instructions">
+        <p>Click on the locations to find silver and gold, watch out for the rattlesnake</p>
+    </div>
+    
+    <div class="info-section">
+        <p id="locations">Number of locations checked is zero.</p>
+    </div>
+    
+    <div class="info-section">
+        <p id="score">Score is zero.</p>
+    </div>
+    
+    <div class="info-section">
+        <p class="help-click">Click for help.</p>
+    </div>
+    
+    <div class="info-section">
+        <p id="help">Help report</p>
+    </div>
+    
+    <div class="game-field">
+        <div class="row">
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+        </div>
+        <div class="row">
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+        </div>
+        <div class="row">
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+        </div>
+        <div class="row">
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+        </div>
+        <div class="row">
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+            <div class="location"><img src="cactus.jpg" alt="cactus"></div>
+        </div>
+    </div>
+</body>
+</html>
