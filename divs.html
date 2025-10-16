@@ -89,12 +89,14 @@
 
   <input type="text" id="inputText" placeholder="Enter text for new item">
 
-  <button onclick="makeNewDiv()">Add end</button>
+  <button onclick="addEnd()">Add end</button>
+  <button onclick="addFront()">Add front</button>
+  <button onclick="remove()">Remove</button>
 
 </body>
 
 <script>
-  function makeNewDiv() {
+  function addEnd() {
     /* make the div and its text */
     let element = document.createElement("div");
     
@@ -112,6 +114,42 @@
     /* add it to the container */
     let container = document.getElementById('target');
     container.appendChild(element);
+  }
+
+  function addFront() {
+    /* create the new element */
+    let element = document.createElement("div");
+    
+    /* get the value from the input element */
+    let inputValue = document.getElementById('inputText').value;
+    
+    /* set the innerHTML to the value from the input */
+    element.innerHTML = inputValue;
+    
+    /* set the className property to "divlist" */
+    element.className = "divlist";
+    
+    element.style.color = "blue";
+
+    /* get the container div */
+    let container = document.getElementById('target');
+    
+    /* insert at the front using insertBefore */
+    container.insertBefore(element, container.firstChild);
+  }
+
+  function remove() {
+    /* get all elements with class "divlist" */
+    let divListItems = document.getElementsByClassName("divlist");
+    
+    /* get the length */
+    let length = divListItems.length;
+    
+    /* if length is greater than 0, remove the middle item */
+    if (length > 0) {
+      let middleIndex = Math.floor(length / 2);
+      divListItems[middleIndex].remove();
+    }
   }
 </script>
 
