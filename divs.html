@@ -65,6 +65,35 @@
     button:hover {
       background-color: #2980b9;
     }
+    
+    .navigation {
+      background-color: white;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .nav-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      background-color: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+    
+    .nav-btn:hover {
+      background-color: #2980b9;
+    }
+    
+    .nav-btn.active {
+      background-color: #27ae60;
+    }
 
     /* Responsive layout */
     @media (max-width: 600px) {
@@ -77,6 +106,12 @@
 </head>
 
 <body>
+  <div class="navigation">
+    <a href="treasure.html" class="nav-btn">Treasure Hunt</a>
+    <a href="reflex.html" class="nav-btn">Reflex Game</a>
+    <a href="divs.html" class="nav-btn active">Build List</a>
+  </div>
+  
   <h2>Chanikya builds list with divs</h2>
 
   <div class="flex-container" id="target">
