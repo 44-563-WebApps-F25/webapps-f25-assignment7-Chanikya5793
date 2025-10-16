@@ -72,8 +72,37 @@
       console.log("Halt time: " + haltTime);
     }
 
+    // Function to begin the countdown
+    function beginTime() {
+      // Reset haltTime for new game
+      haltTime = undefined;
+      
+      // Loop to create countdown from 5 to 0
+      for (let i = 0; i <= 5; i++) {
+        setTimeout(function() {
+          document.getElementById('counter').innerHTML = "Count: " + i;
+        }, (5 - i) * 1000);
+      }
+
+      // After 5000ms, check how well the user did
+      setTimeout(function() {
+        if (haltTime === undefined) {
+          // User was too slow
+          document.getElementById('target').innerHTML = "Not soon enough";
+        } else {
+          // Calculate how well they did
+          var targetTime = Date.now();
+          var difference = targetTime - haltTime;
+          document.getElementById('target').innerHTML = "Time was " + difference + " ms";
+        }
+      }, 5000);
+    }
+
     // Set onclick property of halt button
     document.getElementById('haltButton').onclick = recordTime;
+
+    // Set onclick property of go button
+    document.getElementById('goButton').onclick = beginTime;
   </script>
 
 </body>
