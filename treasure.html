@@ -215,14 +215,51 @@
             "img28", "img29", "img30", "img31", "img32", "img33", "img34"
         ];
 
+        // BONUS: Function to generate random unique positions
+        function generateRandomPositions() {
+            var positions = [];
+            while (positions.length < 6) { // 1 snake + 1 gold + 4 silver
+                var randomPos = Math.floor(Math.random() * 35);
+                if (!positions.includes(randomPos)) {
+                    positions.push(randomPos);
+                }
+            }
+            return positions;
+        }
+
+        // BONUS: Initialize random positions
+        var randomPositions = generateRandomPositions();
+        
         // Game variables
         var score = 0;
         var locationsVisited = 0;
         var lastLocation = 0;
-        var silverLocations = [2, 5, 11, 21, 32];
-        var goldLocation = 15;
-        var snakeLocation = 20;
+        var silverLocations = [randomPositions[2], randomPositions[3], randomPositions[4], randomPositions[5]];
+        var goldLocation = randomPositions[1];
+        var snakeLocation = randomPositions[0];
         var gameOver = false;
+
+        // BONUS: Function to move snake randomly
+        function moveSnake() {
+            var currentRow = Math.floor(snakeLocation / 7);
+            var currentCol = snakeLocation % 7;
+            var directions = [];
+            
+            // Check which directions are valid
+            if (currentRow > 0) directions.push('north'); // Can move north
+            if (currentRow < 4) directions.push('south'); // Can move south
+            if (currentCol > 0) directions.push('west');  // Can move west
+            if (currentCol < 6) directions.push('east');  // Can move east
+            
+            // Randomly choose a valid direction
+            var randomDirection = directions[Math.floor(Math.random() * directions.length)];
+            
+            // Move snake in chosen direction
+            if (randomDirection === 'north') snakeLocation -= 7;
+            else if (randomDirection === 'south') snakeLocation += 7;
+            else if (randomDirection === 'west') snakeLocation -= 1;
+            else if (randomDirection === 'east') snakeLocation += 1;
+        }
 
         // Check function - handles image clicks
         function check(position) {
@@ -259,6 +296,18 @@
             // Update the display
             document.getElementById("locations").innerHTML = "Number of locations checked is " + locationsVisited + ".";
             document.getElementById("score").innerHTML = "Score is " + score + ".";
+
+            // BONUS: Move snake after each click (if game not over)
+            if (!gameOver) {
+                moveSnake();
+                // Check if snake landed on player's last location
+                if (snakeLocation === position) {
+                    gameOver = true;
+                    score -= 5;
+                    document.getElementById(ids[snakeLocation]).src = "snake.jpg";
+                    alert("The snake caught you! Game Over!");
+                }
+            }
 
             // Update lastLocation
             lastLocation = position;

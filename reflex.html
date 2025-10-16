@@ -113,14 +113,18 @@
       // Reset haltTime for new game
       haltTime = undefined;
       
-      // Loop to create countdown from 5 to 0
-      for (let i = 0; i <= 5; i++) {
+      // BONUS: Randomly choose a starting value from 2 to 10
+      var startCount = Math.floor(Math.random() * 9) + 2; // Random number between 2 and 10
+      document.getElementById('target').innerHTML = "Starting countdown from " + startCount;
+      
+      // Loop to create countdown from startCount to 0
+      for (let i = 0; i <= startCount; i++) {
         setTimeout(function() {
           document.getElementById('counter').innerHTML = "Count: " + i;
-        }, (5 - i) * 1000);
+        }, (startCount - i) * 1000);
       }
 
-      // After 5000ms, check how well the user did
+      // After (startCount * 1000)ms, check how well the user did
       setTimeout(function() {
         if (haltTime === undefined) {
           // User was too slow
@@ -131,7 +135,7 @@
           var difference = targetTime - haltTime;
           document.getElementById('target').innerHTML = "Time was " + difference + " ms";
         }
-      }, 5000);
+      }, startCount * 1000);
     }
 
     // Set onclick property of halt button

@@ -127,6 +127,7 @@
   <button onclick="addEnd()">Add end</button>
   <button onclick="addFront()">Add front</button>
   <button onclick="remove()">Remove</button>
+  <button onclick="duplicate()">Duplicate</button>
 
 </body>
 
@@ -184,6 +185,34 @@
     if (length > 0) {
       let middleIndex = Math.floor(length / 2);
       divListItems[middleIndex].remove();
+    }
+  }
+
+  // BONUS: Function to duplicate a random element
+  function duplicate() {
+    /* get all elements with class "divlist" */
+    let divListItems = document.getElementsByClassName("divlist");
+    
+    /* get the length */
+    let length = divListItems.length;
+    
+    /* if there are items to duplicate */
+    if (length > 0) {
+      /* randomly select one element */
+      let randomIndex = Math.floor(Math.random() * length);
+      let selectedElement = divListItems[randomIndex];
+      
+      /* create a copy of the element */
+      let duplicate = document.createElement("div");
+      duplicate.innerHTML = selectedElement.innerHTML + " (copy)";
+      duplicate.className = "divlist";
+      duplicate.style.color = "green";
+      
+      /* get the container */
+      let container = document.getElementById('target');
+      
+      /* add the copy at the front */
+      container.insertBefore(duplicate, container.firstChild);
     }
   }
 </script>
